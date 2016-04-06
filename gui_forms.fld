@@ -1,0 +1,101 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0302 
+header_name {.h} 
+code_name {.cxx}
+decl {\#include <FL/Fl_Color_Chooser.H>} {public global
+} 
+
+Function {make_main()} {open
+} {
+  Fl_Window wnd_main {
+    label {LED Controller v0.1 - ViP PROTO} open
+    xywh {644 137 550 740} type Double visible
+  } {
+    Fl_Scroll {} {open
+      xywh {0 0 250 740}
+    } {
+      Fl_Pack pck_generators {
+        label Generators
+        xywh {0 25 220 100} color 60 labelfont 3 labelsize 20 align 5
+      } {}
+    }
+    Fl_Scroll {} {open
+      xywh {250 0 300 740}
+    } {
+      Fl_Pack pck_devices {
+        label Devices open
+        xywh {250 25 260 100} labelfont 3 labelsize 20 align 5
+      } {}
+    }
+  }
+} 
+
+widget_class RGBPickerGUI {
+  label RGBPickerGUI open
+  xywh {731 293 220 220} type Double hide
+} {
+  Fl_Box color {
+    protected xywh {0 30 220 150}
+    class Fl_Color_Chooser
+  }
+  Fl_Box lbl_main {
+    protected xywh {0 0 220 30} labelfont 1 align 21
+  }
+  Fl_Choice cmb_perm {open
+    protected xywh {100 185 120 30} down_box BORDER_BOX labelfont 1
+  } {}
+  Fl_Light_Button btn_on_off {
+    label {ON / OFF}
+    protected xywh {0 185 85 30}
+  }
+} 
+
+widget_class DeviceGUI_ {
+  label DeviceGUI_ open
+  xywh {897 320 260 260} type Double visible
+} {
+  Fl_Group {} {open
+    xywh {0 0 260 50}
+  } {
+    Fl_Box lbl_name {
+      label 0123456789ABCDEF
+      protected xywh {0 0 160 25} labelfont 1 align 20
+    }
+    Fl_Box lbl_addr {
+      protected xywh {0 25 260 25} align 20
+    }
+    Fl_Box lbl_ch {
+      label {5 channels}
+      protected xywh {160 0 100 25} align 20
+    }
+  }
+  Fl_Scroll {} {open
+    xywh {0 50 180 210} type VERTICAL
+  } {
+    Fl_Pack pck_assigns {open
+      protected xywh {0 50 150 210}
+    } {}
+  }
+  Fl_Button btn_minus {
+    label {-} selected
+    protected xywh {190 60 50 30} labelfont 1 labelsize 20
+  }
+} 
+
+widget_class AudioRGBLMHGUI {
+  label AudioRGBLMHGUI open
+  xywh {805 488 220 140} type Double hide
+} {
+  Fl_Slider sld_low {
+    label Low
+    protected xywh {0 44 220 25} type {Horz Knob} align 5 maximum 0.1 step 0.001
+  }
+  Fl_Slider sld_high {
+    label High
+    protected xywh {0 99 220 25} type {Horz Knob} align 5 minimum 0.01 step 0.001
+  }
+  Fl_Box lbl_name {
+    label Audio
+    protected xywh {0 0 220 25} labelfont 1 align 21
+  }
+} 
